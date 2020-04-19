@@ -13,6 +13,7 @@
     "egg": "^2.26.0",
     "egg-bin": "^4.14.1",
     "egg-cors": "^2.2.3",
+    "egg-mysql": "^3.0.0",
     "tencentcloud-sdk-nodejs": "^3.0.126"
   },
   "devDependencies": {}

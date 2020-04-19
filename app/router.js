@@ -1,11 +1,13 @@
 module.exports = app => {
     const { router, controller, middleware } = app;
     
-    router.get('/', controller.home.index);
+    // user
+    router.post('/api/login', controller.user.login);
+    router.post('/api/register', controller.user.register);
 
-    router.get('/api/verify', controller.news.index);
+    // 验证码
+    router.get('/api/sendVelidata', controller.verify.sendVelidata);
+    router.post('/api/verify', controller.verify.verify)
 
-    router.get('/news/content', middleware.forbidip(), controller.news.content);
-
-    router.post('/api/register', controller.news.list);
+    
 }
