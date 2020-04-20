@@ -16,9 +16,7 @@ class VerifyController extends Controller {
   async verify() {
     const { ctx, service } = this;
     const { phone, velidata } = ctx.request.body;
-    console.log(phone)
     const localVelidata = await service.verify.getVelidata(phone);
-    console.log(localVelidata)
     if( localVelidata === velidata){
         ctx.body= '验证成功';
     }else{

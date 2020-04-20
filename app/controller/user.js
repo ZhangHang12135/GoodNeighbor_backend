@@ -35,6 +35,17 @@ class UserController extends Controller {
         ctx.status = 401;
     }
   }
+  // 更新密码
+  async updatePassword() {
+    const { ctx, service } = this;
+    const updateUser = await service.user.updatePassword(ctx.request.body);
+    if(updateUser){
+      ctx.body = '密码重置成功';
+    }else{
+        ctx.body = '密码重置失败';
+        ctx.status = 401;
+    }
+  }
 }
 
 module.exports = UserController;
