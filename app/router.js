@@ -8,6 +8,11 @@ module.exports = app => {
     // 验证码
     router.get('/api/sendVelidata', controller.verify.sendVelidata);
     router.post('/api/verify', controller.verify.verify)
-
+    // 订单
+    router.get('/api/getOrderNow', controller.order.getOrderNow);
+    router.get('/api/getOrderList', controller.order.getOrderList);
+    // 菜单
+    router.post('/api/addMenu', controller.menu.addMenu);
+    router.get('/api/getMenuList', controller.menu.getMenuList);
     
 }

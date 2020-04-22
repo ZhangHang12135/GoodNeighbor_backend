@@ -15,7 +15,7 @@ class VerifyService extends Service {
     return result.affectedRows === 1;
   }
   async getVelidata(phone) {
-      const velidata = await this.app.mysql.get('velify', { phone: phone})
+      const velidata = await this.app.mysql.get('velify', { phone: phone })
       return velidata.velidata;
   }
 }

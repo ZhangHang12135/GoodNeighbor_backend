@@ -4,7 +4,7 @@ const Service = require('egg').Service;
 
 class UserService extends Service {
   async findUser(phone) {
-    const user = await this.app.mysql.get('user', { phone: phone});
+    const user = await this.app.mysql.get('user', { phone: phone });
     return user;
   }
   async registerUser(user) {

@@ -8,6 +8,7 @@ class UserController extends Controller {
     const user = await service.user.findUser(phone);
     if(user && password === user.password){
         ctx.body = {
+            uId: user.uId,
             name: user.name,
             phone: user.phone,
             address: user.address,
