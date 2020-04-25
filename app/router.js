@@ -14,5 +14,17 @@ module.exports = app => {
     // 菜单
     router.post('/api/addMenu', controller.menu.addMenu);
     router.get('/api/getMenuList', controller.menu.getMenuList);
+
+    /**
+     * 客户端路由
+     */
+    router.get('/api/v2/getMenu', controller.menu.getMenu);
+    router.get('/api/v2/setOpenId', controller.openId.setOpenId)
+    // 地址
+    router.get('/api/v2/getAddress', controller.custom.getCustomAddress);
+    router.post('/api/v2/addAddress', controller.custom.addCustomAddress);
+    router.post('/api/v2/editAddress', controller.custom.editCustomAddress);
+    // 订单
+    router.post('/api/v2/creatOrder', controller.order.creatOrder);
     
 }

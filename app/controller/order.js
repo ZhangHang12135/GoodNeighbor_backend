@@ -13,6 +13,50 @@ class OrderController extends Controller {
     const result = await service.order.getOrderList(ctx.query.uId);
     ctx.body = result;
   }
+  async creatOrder() {
+    const { ctx, service } = this;
+    const { cartList, code } = ctx.request.body;
+    const addressArray = await service.custom.getCustomAddress(code);
+    let address, orderArr = {};
+    for (const key in addressArray) {
+      if (addressArray.hasOwnProperty(key)) {
+        const element = addressArray[key];
+        if(element.default == 1){
+          address = element
+        }
+      }
+    }
+    cartList.forEach((item)=>{
+      let { name, count, price, uId } = item;
+      if(orderArr[uId]){
+        orderArr[uId].push({ name, count, price });
+      }else{
+        orderArr[uId] = [];
+        orderArr[uId].push({ name, count, price });
+      }
+    })
+    let time = new Date();
+    let orderDate = `${time.getFullYear()}-${time.getMonth()+1}-${time.getDate()} ${time.getHours()}:${time.getMinutes()}`
+    for (const key in orderArr) {
+      let arr = orderArr[key];
+      let order = {
+        order_menu: '',
+        order_date: orderDate,
+        order_price: 0,
+        order_state: 0,
+        custom_name: address.name,
+        custom_phone: address.phone,
+        custom_address: address.address+' '+address.area,
+        uId: parseInt(key)
+      }
+      arr.forEach(item=>{
+        order.order_menu += `${item.name}x${item.count} `;
+        order.order_price += item.count * item.price;
+      })
+      await service.order.addOrder(order);
+    }
+    ctx.body = '支付成功'
+  }
 }
 
 module.exports = OrderController;

@@ -18,6 +18,12 @@ class MenuController extends Controller {
     const result = await service.menu.getMenuList(ctx.query.uId);
     ctx.body = result;
   }
+  // 客户接口
+  async getMenu() {
+    const { ctx, service } = this;
+    const result = await service.menu.getMenu(ctx.query);
+    ctx.body = result;
+  }
 }
 
 module.exports = MenuController;

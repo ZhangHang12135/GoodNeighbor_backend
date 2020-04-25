@@ -14,6 +14,16 @@ class MenuService extends Service {
       const result = await this.app.mysql.select('menu', { where:{ uId:uId }});
       return result;
   }
+  // 客户端获取菜品
+  async getMenu(query) {
+    const page = parseInt(query.page);
+    const per_page = parseInt(query.per_page);
+    const result = await this.app.mysql.select('menu', {
+      limit: per_page,
+      offset: page*per_page
+    })
+    return result;
+  }
 }
 
 module.exports = MenuService;

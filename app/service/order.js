@@ -12,6 +12,11 @@ class OrderService extends Service {
       const result = await this.app.mysql.select('order', { where:{ uId: uId, order_state: 1}})
       return result;
   }
+
+  async addOrder(order) {
+    const result = await this.app.mysql.insert('order', order)
+    return result.affectedRows === 1
+  }
 }
 
 module.exports = OrderService;
