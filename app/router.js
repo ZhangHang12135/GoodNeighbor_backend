@@ -1,5 +1,5 @@
 module.exports = app => {
-    const { router, controller, middleware } = app;
+    const { router, controller } = app;
     
     // user
     router.post('/api/login', controller.user.login);
