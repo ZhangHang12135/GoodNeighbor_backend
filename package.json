@@ -1,0 +1,21 @@
+{
+  "name": "GoodNeighbor_backend",
+  "version": "0.0.1",
+  "description": "商家端后台",
+  "main": "index.js",
+  "repository": "git@github.com:ZhangHang12135/GoodNeighbor_backend.git",
+  "author": "ZhangHang12135 <z839187405@qq.com>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "egg-bin dev"
+  },
+  "dependencies": {
+    "axios": "^0.19.2",
+    "egg": "^2.26.0",
+    "egg-bin": "^4.14.1",
+    "egg-cors": "^2.2.3",
+    "egg-mysql": "^3.0.0",
+    "tencentcloud-sdk-nodejs": "^3.0.126"
+  },
+  "devDependencies": {}
+}
