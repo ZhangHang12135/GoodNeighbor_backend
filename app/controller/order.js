@@ -13,6 +13,18 @@ class OrderController extends Controller {
     const result = await service.order.getOrderList(ctx.query.uId);
     ctx.body = result;
   }
+  async updateOrder() {
+    const { ctx, service } = this;
+    const { order_id, order_state } = ctx.request.body;
+    const result = await service.order.updateOrder(order_id, order_state);
+    if(result){
+      ctx.body = '更新成功';
+    }else{
+      ctx.body = '更新失败';
+      ctx.status = 500;
+    }
+  }
+
   async creatOrder() {
     const { ctx, service } = this;
     const { cartList, code } = ctx.request.body;

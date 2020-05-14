@@ -30,5 +30,24 @@ module.exports = {
             }
         })
         return res.data.openid;
+    },
+    getSevenDays(year, month, day){
+        let months = (year % 4 == 0 && year % 100 != 0) || year % 400 == 0 ?
+        [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31] : [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+        let i = 0;
+        let sevenDays = [];
+        while(i < 7){
+            sevenDays.push(`${month}-${day}`);
+            day--;
+            if(day == 0){
+                month--;
+                if(month == 0){
+                    month = 12;
+                }
+                day = months[month-1];
+            }
+            i++;
+        }
+        return sevenDays;
     }
 }
