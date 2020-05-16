@@ -12,7 +12,10 @@ class CustomController extends Controller {
   async addCustomAddress() {
       const { ctx, service } = this;
       const code = ctx.query.code;
-      const result = await service.custom.addCustomAddress(code, ctx.request.body);
+      let addressItem = ctx.request.body;
+      const address = await service.custom.getCustomAddress(code);
+      if(address == 1) addressItem.default = 1;
+      const result = await service.custom.addCustomAddress(code, addressItem);
       if(result){
           ctx.body = '添加成功';
       }else{
