@@ -1,6 +1,9 @@
 module.exports = app => {
     const { router, controller } = app;
-    
+
+    // home
+    router.get('/api/getHome', controller.home.getHome);
+
     // user
     router.post('/api/login', controller.user.login);
     router.post('/api/register', controller.user.register);
@@ -11,6 +14,7 @@ module.exports = app => {
     // 订单
     router.get('/api/getOrderNow', controller.order.getOrderNow);
     router.get('/api/getOrderList', controller.order.getOrderList);
+    router.post('/api/updateOrder', controller.order.updateOrder);
     // 菜单
     router.post('/api/addMenu', controller.menu.addMenu);
     router.get('/api/getMenuList', controller.menu.getMenuList);
@@ -26,5 +30,4 @@ module.exports = app => {
     router.post('/api/v2/editAddress', controller.custom.editCustomAddress);
     // 订单
     router.post('/api/v2/creatOrder', controller.order.creatOrder);
-    
 }
